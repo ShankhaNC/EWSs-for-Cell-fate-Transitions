@@ -1,0 +1,44 @@
+clc;
+clear all;
+close all;
+A=readmatrix('Sensitivity_Data_meanar.csv');
+B=readmatrix('Sensitivity_Data_maxar.csv');
+C=readmatrix('Sensitivity_Data_meansd.csv');
+D=readmatrix('Sensitivity_Data_maxsd.csv');
+E=readmatrix('Sensitivity_Data_eigenmaf.csv');
+F=readmatrix('Sensitivity_Data_mafar.csv');
+G=readmatrix('Sensitivity_Data_mafsd.csv');
+H=readmatrix('Sensitivity_Data_pcaar.csv');
+I=readmatrix('Sensitivity_Data_pcasd.csv');
+J=readmatrix('Sensitivity_Data_eigencov.csv');
+K=readmatrix('Sensitivity_Data_maxcov.csv');
+L=readmatrix('Sensitivity_Data_mutinfo.csv');
+
+colors=[0.5,0.5,0; 
+    0.53,0.15,0.34; 
+    0.74,0.72,0.42; 
+    1, 0.41, 0.16;
+    0.6  0.47 0.48;
+    0.7388 0.1383 0.8310;
+    0.9582 0.6988 0.0185;
+    0.4660 0.6740 0.1880;
+    0.3010 0.7450 0.9330;
+    0.03,0.71,0.40;
+    0.4940 0.1840 0.5560;
+    0 0.4470 0.7410];
+figure('Position',[223,474,1410,406]);
+
+z=[A',B',C',D',E',F',G',H',I',J',K',L'];
+v=violinplot(z());
+set(gca,'Fontsize',14,'LineWidth',1.5,'Fontweight','bold','tickdir','out');
+ylabel('Kendall''s \tau','interpreter','tex','Fontsize',18,'rotation',90)
+yticks([ -0.2 0 0.2 0.4 0.6 0.8 1]);
+yticklabels({ '-0.2',  '0', '0.2', '0.4', '0.6', '0.8', '1'});
+ylim([-0.2 1.01]);
+xlim([0.5 12.5]);
+xticks([1 2 3 4 5 6 7 8 9 10 11 12]);
+xticklabels({'meanar', 'maxar', 'meansd', 'maxsd', 'eigenmaf', 'mafar', 'mafsd', 'pcaar', 'pcasd', 'eigencov', 'maxcov', 'mutinfo'});
+box off;
+xline(12.5,'Alpha',1,'Color','k','LineWidth',1.5);
+yline(1.01,'Alpha',1,'Color','k','LineWidth',1.5);
+yline(0,'Alpha',1,'Color','r','LineWidth',2,'LineStyle','--');
