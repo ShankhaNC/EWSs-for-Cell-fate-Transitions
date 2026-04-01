@@ -5,7 +5,7 @@ library(tictoc)
 tic()
 
 # Load data
-data <- read.csv("D:/Gollarani/Panel/Forward_MAF_Traj1.csv", header = FALSE)
+data <- read.csv("Read Your Source Data.csv", header = FALSE)
 
 m <- 1
 n <- 910
@@ -33,7 +33,7 @@ combined_ts <- detrend_ts(
 )
 
 out <- combined_ts
-outpath <- "D:/Gollarani/Panel/MAF_Lo.csv"
+outpath <- "Store Your Output Data.csv"
 write.csv(out, file = outpath, row.names = FALSE)
 
 toc()
